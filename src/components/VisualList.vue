@@ -15,8 +15,10 @@
 </template>
 
 <script>
+
   export default {
-    props: ['vimg','vtitle','vtxt', 'vbt', 'vlink']
+    props: ['vimg','vtitle','vtxt', 'vbt', 'vlink'],
+
   }
 </script>
 
