@@ -30,13 +30,6 @@ export default {
     VisualList,Swiper,SwiperSlide
   },
   setup(){
-    const onSwiper = (swiper) => {
-      console.log(swiper)
-    };
-    const onSlideChange = () => {
-      console.log('slide change')
-    };
-
     const slideData = ref([]);
     slideData.value = [
       {
@@ -69,8 +62,6 @@ export default {
       }
     ]
     return{
-      onSwiper,
-      onSlideChange,
       modules : [Autoplay],
       SwiperSlide,
       slideData

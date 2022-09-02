@@ -1,7 +1,8 @@
 <template>
   <div>
+    <ModalView/>
     <!-- 모바일메뉴 -->
-    <MbDiv :mbmenu="mbMenuData"/>
+    <MbDiv/>
     <!-- 배너 -->
     <BannerView />
     <!-- 내용 -->
@@ -122,6 +123,7 @@
 <script>
   import {onMounted} from 'vue';
   import $ from 'jquery';
+  import ModalView from '@/components/ModalView.vue';
   import MbDiv from '@/components/MbDiv.vue';
   import BannerView from '@/components/BannerView.vue';
   import VisualView from '@/components/VisualView.vue';
@@ -131,7 +133,7 @@
   export default {
     name: 'App',
     components: {
-      MbDiv,BannerView,VisualView,CategoryView,SitemapView,
+      ModalView,MbDiv,BannerView,VisualView,CategoryView,SitemapView,
 
     },
     setup() {
@@ -155,68 +157,9 @@
         });
       });
       
-      const mbMenuData = [
-        {
-          menuType: 'S',
-          mainText: 'SHOP',
-          mainLink: '',
-          subArr: [
-            {link: '1.html',title: 'All PRODUCT'},
-            {link: '2.html',title: 'NEWBRON'},
-            {link: '3.html',title: 'BABY'},
-            {link: '4.html',title: 'FAMILY'},
-            {link: '5.html',title: 'BATH GOODS'},
-            {link: '6.html',title: 'PRESENTS'}
-          ]
-        },
-        {
-          menuType: 'S',
-          mainText: 'ABOUT',
-          mainLink: '',
-          subArr: [
-            {link: '7.html',title: 'BRAND STORY'},
-            {link: '8.html',title: 'WHO WE ARE'},
-            {link: '9.html',title: 'MAKE A WISH'},
-            {link: '10.html',title: 'PRESS'}
-          ]
-        },
-        {
-          menuType: 'S',
-          mainText: 'TRUST',
-          mainLink: '',
-          subArr: [
-            {link: '11.html',title: 'FOOD GRADE'},
-            {link: '12.html',title: 'PENTACERA™'},
-            {link: '13.html',title: 'BABY SKINCARE'},
-            {link: '14.html',title: 'CERTIFICATIONS'},
-            {link: '15.html',title: 'INGREDIENT'}
-          ]
-        },
-        {
-          menuType: 'A',
-          mainText: 'STOCKISTS',
-          mainLink: 'a.html',
-          subArr: []
-        },
-        {
-          menuType: 'A',
-          mainText: 'REVIEW',
-          mainLink: 'b.html',
-          subArr: []
-        },
-        {
-          menuType: 'S',
-          mainText: 'BENEFITS',
-          mainLink: '',
-          subArr: [
-            {link: '16.html',title: 'EVENTS'},
-            {link: '17.html',title: 'MEMBERS'}
-          ]
-        },
-      ];
       
       return {
-        mbMenuData
+        
       }
     }
   }

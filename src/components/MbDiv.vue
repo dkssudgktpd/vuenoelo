@@ -9,12 +9,12 @@
       </div>
       <div class="mb-wrap">
         <ul class="mb-menu">
-          <li v-for="(item,index) in mbmenu" :key="index">
+          <li v-for="(item,index) in mbMenu" :key="index">
             <span class="mb-mainmenu" v-if="item.menuType == 'S'">{{item.mainText}}</span>
             <a :href="item.mainLink" class="mb-mainmenu" v-if="item.menuType == 'A'">{{item.mainText}}</a>
             <ul class="mb-submenu" v-if="item.menuType == 'S'">
               <li v-for="(subitem,subindex) in item.subArr" :key="subindex">
-                <a :href="subitem.link">{{subitem.title}}</a>
+                <a :href="subitem.sublink">{{subitem.subtitle}}</a>
               </li>
             </ul>
           </li>
@@ -25,16 +25,19 @@
 </template>
 
 <script>
-  import {
-    onMounted
-  } from "vue";
+  import { onUpdated,computed } from "vue";
   import $ from 'jquery';
-
+  import {useStore} from 'vuex'
   export default {
-    props: ['mbmenu'],
     setup() {
+      // vuex의 기능을 사용하기위해 참조 객체를 만듬
+      // 현재는 store 변수를 통해서 접근해 기능을 실행
+      const store = useStore();
+      // store의 state(데이터)는 수시로 변경되므로 computed로 감시한다.
+      const mbMenu = computed(()=> store.getters.getMbData)
+      store.dispatch('fetchMbMenu')
       // 화면에 html의 구성이 완료되면
-      onMounted(() => {
+      onUpdated(() => {
         // 모바일메뉴
         let mb_div = $('.mb-div');
         console.log(mb_div);
@@ -100,7 +103,7 @@
 
 
       return {
-
+        mbMenu
       }
     }
   }
