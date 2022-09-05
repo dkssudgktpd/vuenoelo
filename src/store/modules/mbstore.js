@@ -5,7 +5,7 @@ const state = {
 }
 const actions = {
   fetchMbMenu({commit}){
-    axios.get('/data/mbmenu.json')
+    axios.get('./data/mbmenu.json')
     .then(response => {
       commit('MBMENU',response.data)
     })

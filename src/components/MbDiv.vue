@@ -35,12 +35,10 @@
       const store = useStore();
       // store의 state(데이터)는 수시로 변경되므로 computed로 감시한다.
       const mbMenu = computed(()=> store.getters.getMbData)
-      store.dispatch('fetchMbMenu')
       // 화면에 html의 구성이 완료되면
       onUpdated(() => {
         // 모바일메뉴
         let mb_div = $('.mb-div');
-        console.log(mb_div);
 
         let mb_bt = $('.mb-bt');
         mb_bt.click(function () {
@@ -235,5 +233,13 @@
     position: relative;
     display: block;
     font-size: 14px;
+  }
+  
+    .mb-bg {
+    position: relative;
+    width: 380px;
+    height: 100%;
+    padding: 0 30px;
+    background-color: #fff;
   }
 </style>

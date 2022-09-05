@@ -1,12 +1,16 @@
 <template>
       <section class="visual">
         <Swiper
-          :modules="modules"
+          :modules = "modules"
           :autoplay = "{
             delay : 2000,
             disableOnInteraction: false,
           }"
           :loop="true"
+          :pagination = "{
+            el:'.sw-visual-pg',
+            clickable : true
+          }"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
           class="sw-visual"
@@ -14,16 +18,19 @@
           <swiper-slide class="swiper-slide" v-for="(item, index) in slideData" :key="index">
             <VisualList :vimg="item.img" :vtitle="item.title" :vtxt="item.txt" :vbt="item.bt" :vlink="item.link" />
           </swiper-slide>
-
+          <div class="sw-visual-control">
+          <div class="sw-visual-pg"></div>
+        </div>
         </Swiper>
     </section>
 </template>
 
 <script>
 import {ref} from 'vue';
-import {Autoplay} from 'swiper';
+import {Autoplay,Pagination} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/vue';
 import 'swiper/css';
+import "swiper/css/pagination";
 import VisualList from '@/components/VisualList.vue';
 export default {
   components:{
@@ -62,8 +69,7 @@ export default {
       }
     ]
     return{
-      modules : [Autoplay],
-      SwiperSlide,
+      modules : [Autoplay,Pagination],
       slideData
     }
   },
@@ -78,6 +84,7 @@ export default {
 .visual .sw-visual {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 .visual .sw-visual .swiper-slide a {
   position: relative;
@@ -192,9 +199,10 @@ export default {
   .visual-4 {
     background: url(@/assets/images/mobile-visual-4.png) no-repeat center !important;
   }
-}
-.sw-visual-control {
-  top: 120vw !important;
+
+  .sw-visual-control {
+    top: 120vw !important;
+  }
 }
 
 @media all and (max-width: 480px) {

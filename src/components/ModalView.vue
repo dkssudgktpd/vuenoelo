@@ -1,7 +1,7 @@
 <template>
   <div class="modal-wrap">
     <div class="modal-main">
-      <h1>마시그래이 클론코딩</h1>
+      <h1>노엘로힐스 클론코딩</h1>
       <p>
         이 사이트는 <b>스터디용</b>으로 제작되었으며 리소스는 <strong>원저작자</strong>에게 있습니다.<br>
         해당 사이트 관련 문제 사항이 있으시면 연락해주시면 <b>삭제</b>하겠습니다.<br>

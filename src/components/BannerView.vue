@@ -1,26 +1,30 @@
 <template>
     <div class="banner">
-    <div class="swiper-container sw-banner">
-      <!-- 슬라이드 내용 -->
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <a href="#" class="banner-1"></a>
-        </div>
-        <div class="swiper-slide">
-          <a href="#" class="banner-2"></a>
-        </div>
-        <div class="swiper-slide">
-          <a href="#" class="banner-3"></a>
-        </div>
-      </div>
-
-      <!-- 슬라이드 콘트롤 -->
-      <div class="sw-banner-control">
+    <Swiper
+    :modules = "modules"
+    @swiper="onswiper"
+    @slideChange="onSlideChange"
+    :autoplay = "{
+      delay : 2500,
+      disableOnInteraction: false
+    }"
+    :loop = "true"
+    :effect = "'fade'"
+    :pagination = "{
+      el: '.sw-banner-pg',
+      clickable: true,
+    }"
+    :allowTouchMove= "false"
+    class="sw-banner"
+    >
+    <SwiperSlide class="swiper-slide"><a href="#" class="banner-1"></a></SwiperSlide>
+    <SwiperSlide class="swiper-slide"><a href="#" class="banner-2"></a></SwiperSlide>
+    <SwiperSlide class="swiper-slide"><a href="#" class="banner-3"></a></SwiperSlide>
+          <div class="sw-banner-control">
         <!-- 페이지네이션 -->
         <div class="sw-banner-pg"></div>
       </div>
-
-    </div>
+    </Swiper>
     <button class="banner-close"></button>
   </div>
 </template>
@@ -28,7 +32,16 @@
 <script>
 import { onMounted,ref } from 'vue';
 import $ from 'jquery'
+import {Swiper, SwiperSlide} from 'swiper/vue'
+import {Autoplay, Pagination, EffectFade} from 'swiper'
+import 'swiper/css'
+import "swiper/css/effect-fade";
+import "swiper/css/pagination";
+
 export default {
+  components:{
+    Swiper,SwiperSlide
+  },
   setup(){
     onMounted(() => {
       let fixY = ref(0);
@@ -39,8 +52,11 @@ export default {
         fixY.value = 0;
         $('.banner').slideUp(300);
       });
+      
     })
     return{
+      modules : [Autoplay, Pagination, EffectFade]
+
     }
   }
 }
